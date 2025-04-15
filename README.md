@@ -1,6 +1,6 @@
 # OU AME Dissertation Template (non-official)
 
-For use, do not edit this repo. Below are instructions on how to use this template:
+For use, do not edit this repo. There are 2 methods of using this template:
 
 ## 1. Download a copy
 You may download a zip copy of this template and import the zip file into [Overleaf](https://www.overleaf.com) to create a new project:
