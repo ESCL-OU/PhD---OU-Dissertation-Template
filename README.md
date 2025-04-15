@@ -2,14 +2,14 @@
 
 For use, do not edit this repo. There are 2 methods of using this template:
 
-## 1. Download a copy
+## Method 1. Download a copy
 1. Download ZIP of this project.
 
 2. Import the downloaded ZIP file into [Overleaf](https://www.overleaf.com):
 
 New Project => Upload Project => Select the downloaded zip file from this repo
 
-## 2. Create a forked repository
+## Method 2. Create a forked repository
 1. Synchronise overleaf to your [GitHub](https://github.com/).
 
 Goto Account Settings => Scroll down to Project Synchronisation => Follow instructions to sync with your [GitHub](https://github.com/) account
