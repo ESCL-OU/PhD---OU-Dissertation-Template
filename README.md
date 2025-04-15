@@ -10,7 +10,7 @@ New Project => Upload Project => Select the downloaded zip file from this repo
 1. Synchronise overleaf to your [GitHub](https://github.com/)
 Goto Account Settings => Scroll down to Project Synchronisation => Follow instructions to sync with your [GitHub](https://github.com/) account
 
-2 . Fork this repo on to your personal github and on [Overleaf](https://www.overleaf.com).
+2. Fork this repo on to your personal github and on [Overleaf](https://www.overleaf.com).
 
 3. Import project to [Overleaf](https://www.overleaf.com) by following: 
 New Project => Import from [GitHub](https://github.com/) => PhD---OU-Dissertation-Template
