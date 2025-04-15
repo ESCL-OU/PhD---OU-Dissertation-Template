@@ -1,0 +1,153 @@
+\ProvidesPackage{MyPackages}
+\usepackage{lipsum} % Just for the template
+%------------------ACRONYMS------------------%
+%glossary for acronyms
+\usepackage[acronym,nonumberlist, toc, section=chapter]{glossaries}
+\RequirePackage{booktabs, longtable} 		
+
+\renewcommand{\glsclearpage}{}
+
+\makeglossaries
+\newlength\maxlength
+\newlength\thislength
+
+\newglossarystyle{mystyle}
+{%
+  \renewenvironment{theglossary}%
+  {% start of glossary
+   % Find maximum width of the second column:
+    \setlength{\maxlength}{0pt}%
+    \forglsentries[\currentglossary]{\thislabel}%
+    {%
+       \settowidth{\thislength}{\glsentrylong{\thislabel}}%
+       \ifdim\thislength>\maxlength
+         \setlength{\maxlength}{\thislength}%
+       \fi
+    }%
+    % Start the tabular environment
+    % \begin{tabular}{l@{\hspace{3.5em}\hspace{3em}}p{\maxlength}}
+    \vspace{0.75cm}
+    \begin{tabular}{L{0.3\linewidth}L{0.6\linewidth}}
+    \toprule
+    \multicolumn{1}{l}{\textbf{Abbreviations}} &
+    \multicolumn{1}{@{}l}{\textbf{Definition}}\\%
+    \midrule
+  }%
+  {% end of glossary
+     \bottomrule
+     \end{tabular}%
+  }%
+  % Header has been incorporated into \begin{theglossary}
+  \renewcommand*{\glossaryheader}{}%
+  % Don't do anything between letter groups
+  \renewcommand*{\glsgroupheading}[1]{}%
+  \renewcommand*{\glsgroupskip}{}%
+  % Set display for each the acronym entry
+  \renewcommand{\glossentry}[2]{%
+    \glstarget{##1}{\glsentryshort{##1}}% short form
+    &
+    \glsentrylong{##1}% long form
+    \\% end of row
+  }%
+  % No sub-entries, so \subglossentry doesn't need redefining
+}
+\input{0_Preface/i_Glossary.tex}
+\glsaddall
+
+%--------------------TABLES----------------------%
+\usepackage{array} % extended column definitions
+% setup
+\usepackage{hhline}
+\newcolumntype{^}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{;}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+  #1\ignorespaces
+}
+% \newcolumntype{b}{>{\bfseries}} % bold column
+% \newcolumntype{i}{>{\itshape}}  % italicised column
+
+% useful shortcuts
+\newcommand{\bfrow}{\rowstyle{\bfseries}}
+\newcommand{\itrow}{\rowstyle{\itshape}}
+\newcommand{\headingrow}{\hline\bfrow}
+\newcommand{\row}{\\ \hline} % end rows with this
+
+% allows for coloured tables
+\usepackage{color, colortbl} 
+
+% allows for merged cells
+% \multicolumn{num_cols}{alignment}{text} span multiple columns with one cell
+% \multirow{num_rows}{*/width}{text} span multiple rows with one cell
+\usepackage{multicol, multirow} 
+ \usepackage{booktabs}
+% allows for multi-page tables, as well as tables as wide as you want
+\usepackage{longtable}
+
+% update headingrow command to include coloured cells
+\renewcommand{\headingrow}{\hline\rowcolor{tableHeadColour}\bfrow}
+
+% same as in CommonSetup2.tex, but for longtables
+\newcommand{\easylongtable}[4][H]{
+  \begin{longtable}[#1]
+    \footnotesize % sets text size to that of footnotes, within table
+    \centering % centers table on screen
+    \caption{#2}
+    \plabel[tab]{#2}
+    \begin{tabular}{#3} 
+      #4
+    \end{tabular}
+  \end{longtable}
+}
+
+% Create table
+\newcommand{\easytable}[4][H]{
+    \renewcommand{\arraystretch}{1.4} % Increases heigh
+  \begin{table}[#1]
+    % \footnotesize % sets text size to that of footnotes, within table
+    \centering % centers table on screen
+    \caption{#2}
+    \plabel[tab]{#2}
+    \begin{tabular}{#3}
+      #4
+    \end{tabular}
+  \end{table}
+}
+
+% if you have a excel table screenshot then use this
+\newcommand{\imtable}[2]{
+    \begin{table}[H]
+        \centering
+        \caption{#1}
+        \plabel[tab]{#1}
+        \includegraphics[width=\textwidth,keepaspectratio]{#2}
+    \end{table}
+} %,height=\textheight
+
+% Allows centre text and choose table width
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{ragged2e}
+\newcolumntype{L}[1]{>{\RaggedRight\hspace{0pt}}p{#1}}
+
+
+
+%This defines some macros that implement Latin abbreviations
+%COMMENT OUT OR DELETE IF UNDESIRED.
+\newcommand{\via}{\textit{via}} %Italicised via.
+\newcommand{\ie}{\textit{i.e.}} %Literally.
+\newcommand{\eg}{{e.g.}} %For example.
+\newcommand{\etc}{\textit{etc.}} %So on...
+% \newcommand{\vv}{\textit{vice versa}} %And the other way around.
+\newcommand{\viz}{\textit{viz}.} %Resulting in.
+\newcommand{\cf}{\textit{cf}.} %See, or 'consistent with'.
+\newcommand{\apr}{\textit{a priori}} %Before the fact.
+\newcommand{\apo}{\textit{a posteriori}} %After the fact.
+\newcommand{\vivo}{\textit{in vivo}} %In the flesh.
+\newcommand{\situ}{\textit{in situ}} %On location.
+\newcommand{\silico}{\textit{in silico}} %Simulation.
+\newcommand{\vitro}{\textit{in vitro}} %In glass.
+\newcommand{\vs}{\textit{versus}} %James \vs{} Pete.
+\newcommand{\ala}{\textit{\`{a} la}} %In the manner of...
+\newcommand{\apriori}{\textit{a priori}} %Before hand.
+\newcommand{\etal}{\textit{et al.}} %And others, with correct punctuation.
+\newcommand{\naive}{na\"\i{}ve} %Queen Amidala is young and \naive{}.
+

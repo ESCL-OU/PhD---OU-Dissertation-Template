@@ -1,0 +1,74 @@
+\documentclass[12pt,dissertation]{z_SetUp/OUPhDDissertation}
+%% LaTeX Preamble - Common packages
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{float}
+\renewcommand{\arraystretch}{1.5}
+\usepackage[utf8]{inputenc} 
+\usepackage{textcomp} 
+\usepackage{graphicx}  
+\usepackage{flafter}  
+\usepackage{natbib}
+\setcitestyle{aysep={}} %MJH 7-1-24: sets citation format to ([author] [year]) instead of ([author], [year]) 
+\usepackage{amsmath,amssymb}  
+\usepackage{bm} 
+\usepackage{pdfsync}  
+\usepackage[export]{adjustbox}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage[section]{placeins}
+\usepackage{geometry}
+% \usepackage{hyperref}
+\usepackage{./z_SetUp/MyPackages}
+\usepackage{subfiles}
+
+\begin{document}
+
+\title{Insert Title here}
+
+\author{Your Name}
+\majorfield{School of Aerospace and Mechanical Engineering}
+\depositdate{2024}
+
+\memberone{Dr. (Chair) Name Name} %Keep (Chair) 
+\membertwo{Dr. Name Name}
+\memberthree{Dr. Name Name}
+\memberfour{Dr. }
+
+\begin{preface}
+
+\subfile{0_Preface/1_Acknowledgments.tex}
+
+\subfile{0_Preface/2_Abstract.tex}
+
+
+\tableofcontents
+\listoffigures
+\listoftables
+\subfile{0_Preface/3_Abbv_Nomenclature.tex}
+
+\end{preface}
+
+\subfile{1_Introduction/1_Introduction.tex}
+
+\subfile{2_Objectives/1_Objectives.tex}
+
+\subfile{3_Literature_Review/0_Literature_Review.tex}
+
+\subfile{4_Methodology/0_Methodology.tex}
+
+\OUsinglespace
+\references{./z_SetUp/ametsocV6}{Thesis_ref}
+
+\newpage
+\appendix
+\section{Appendix A}
+
+%If you need another appendix 
+%\FloatBarrier
+%\section{Appendix B}
+%\input{thesis_chapters/g.appendix2}
+
+
+\end{document}
